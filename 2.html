@@ -19,7 +19,7 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: auto; /* 允许滚动 */
         }
         
         /* 新增：题目导航按钮 */
@@ -83,7 +83,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
         }
         
         .content {
@@ -92,7 +92,6 @@
             gap: 3px;
             flex: 1;
             width: 100%;
-            height: 100%;
             min-height: 0;
         }
         
@@ -103,7 +102,7 @@
             gap: 3px;
             margin-bottom: 0px;
             width: 100%;
-            height: calc(100vh - 120px);
+            height: 100vh; /* 占据整个屏幕高度 */
             background: #2c3e50;
             transition: background 0.3s ease;
             position: relative;
@@ -169,7 +168,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
             width: calc(100% - 40px);
             max-width: 1600px;
-            margin: 10px auto 10px;
+            margin: 20px auto;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
@@ -343,6 +342,27 @@
             pointer-events: none;
         }
         
+        /* 滚动提示 */
+        .scroll-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            animation: pulse 2s infinite;
+            z-index: 5;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.5; }
+        }
+        
         @media (max-width: 992px) {
             .main-controls {
                 gap: 8px;
@@ -378,13 +398,13 @@
             }
             
             .images-container {
-                height: calc(100vh - 110px);
+                height: 100vh;
             }
             
             .controls {
                 padding: 12px;
                 width: calc(100% - 30px);
-                margin: 8px auto 8px;
+                margin: 15px auto;
             }
             
             .main-controls {
@@ -422,13 +442,13 @@
         
         @media (max-width: 600px) {
             .images-container {
-                height: calc(100vh - 100px);
+                height: 100vh;
             }
             
             .controls {
                 padding: 10px;
                 width: calc(100% - 20px);
-                margin: 5px auto 5px;
+                margin: 10px auto;
             }
             
             .main-controls {
@@ -472,12 +492,12 @@
         
         @media (max-width: 480px) {
             .images-container {
-                height: calc(100vh - 90px);
+                height: 100vh;
             }
             
             .controls {
                 padding: 8px;
-                margin: 3px auto 3px;
+                margin: 8px auto;
             }
             
             .main-controls {
@@ -517,12 +537,12 @@
         /* 横屏优化 */
         @media (max-height: 600px) {
             .images-container {
-                height: calc(100vh - 80px);
+                height: 100vh;
             }
             
             .controls {
                 padding: 8px;
-                margin: 5px auto;
+                margin: 10px auto;
             }
             
             .main-controls {
@@ -554,9 +574,11 @@
                 <div class="image-container" id="main-container">
                     <!-- 主图将在这里显示 -->
                 </div>
+                <!-- 滚动提示 -->
+                <div class="scroll-hint">向下滚动查看控制面板</div>
             </div>
 
-            <!-- 控制按钮区域（非固定，流式布局） -->
+            <!-- 控制按钮区域（放在图片下方，需要滚动才能看到） -->
             <div class="controls">
                 <div class="main-controls">
                     <button class="toggle-btn" id="toggle-all">全部显示</button>
