@@ -19,10 +19,9 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            overflow: auto; /* 允许滚动 */
+            overflow: auto;
         }
         
-        /* 新增：题目导航按钮 */
         .question-nav {
             position: fixed;
             top: 0px;
@@ -55,7 +54,6 @@
             transform: scale(1.1);
         }
         
-        /* 新增：题目指示器 */
         .question-indicator {
             position: fixed;
             top: 6px;
@@ -102,7 +100,7 @@
             gap: 3px;
             margin-bottom: 0px;
             width: 100%;
-            height: 100vh; /* 占据整个屏幕高度 */
+            height: 100vh;
             background: #2c3e50;
             transition: background 0.3s ease;
             position: relative;
@@ -125,6 +123,7 @@
             margin: 0 auto;
         }
         
+        /* 关键修改：确保底图和图层使用相同的样式 */
         .base-image, .layer {
             transition: opacity 0.3s ease;
             display: block;
@@ -133,22 +132,20 @@
             width: auto;
             height: auto;
             object-fit: contain;
+            /* 确保所有图片使用相同的定位和尺寸 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         
         .base-image {
             z-index: 1;
-            position: relative;
         }
         
         .layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             opacity: 0;
             z-index: 2;
-            object-fit: contain;
         }
         
         .layer.blinking {
@@ -284,7 +281,6 @@
             opacity: 0.8;
         }
         
-        /* 悬浮导航按钮样式 */
         .floating-nav {
             position: fixed;
             display: flex;
@@ -342,7 +338,6 @@
             pointer-events: none;
         }
         
-        /* 滚动提示 */
         .scroll-hint {
             position: absolute;
             bottom: 20px;
@@ -362,207 +357,13 @@
             0%, 100% { opacity: 0.8; }
             50% { opacity: 0.5; }
         }
-        
-        @media (max-width: 992px) {
-            .main-controls {
-                gap: 8px;
-            }
-            
-            .toggle-btn {
-                padding: 7px 14px;
-                font-size: 0.85rem;
-            }
-            
-            .nav-btn, .number-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 1rem;
-            }
-            
-            .floating-nav-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .floating-toggle-btn {
-                min-width: 40px;
-                padding: 0 10px;
-                font-size: 0.85rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 0;
-            }
-            
-            .images-container {
-                height: 100vh;
-            }
-            
-            .controls {
-                padding: 12px;
-                width: calc(100% - 30px);
-                margin: 15px auto;
-            }
-            
-            .main-controls {
-                gap: 6px;
-            }
-            
-            .toggle-btn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-            
-            .nav-btn, .number-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-            }
-            
-            .floating-nav {
-                top: 80px;
-                right: 15px;
-            }
-            
-            .floating-nav-btn {
-                width: 38px;
-                height: 38px;
-                font-size: 1.1rem;
-            }
-            
-            .floating-toggle-btn {
-                min-width: 38px;
-                padding: 0 9px;
-                font-size: 0.8rem;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .images-container {
-                height: 100vh;
-            }
-            
-            .controls {
-                padding: 10px;
-                width: calc(100% - 20px);
-                margin: 10px auto;
-            }
-            
-            .main-controls {
-                gap: 5px;
-            }
-            
-            .toggle-btn {
-                padding: 5px 10px;
-                font-size: 0.75rem;
-            }
-            
-            .nav-btn, .number-btn {
-                width: 28px;
-                height: 28px;
-                font-size: 0.85rem;
-            }
-            
-            .key-hint {
-                font-size: 0.8rem;
-            }
-            
-            .floating-nav {
-                top: 65px;
-                right: 8px;
-                gap: 4px;
-            }
-            
-            .floating-nav-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
-            }
-            
-            .floating-toggle-btn {
-                min-width: 35px;
-                padding: 0 8px;
-                font-size: 0.75rem;
-                border-radius: 17.5px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .images-container {
-                height: 100vh;
-            }
-            
-            .controls {
-                padding: 8px;
-                margin: 8px auto;
-            }
-            
-            .main-controls {
-                gap: 4px;
-            }
-            
-            .toggle-btn {
-                padding: 4px 8px;
-                font-size: 0.7rem;
-            }
-            
-            .nav-btn, .number-btn {
-                width: 26px;
-                height: 26px;
-                font-size: 0.8rem;
-            }
-            
-            .floating-nav {
-                top: 60px;
-                right: 8px;
-            }
-            
-            .floating-nav-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 0.9rem;
-            }
-            
-            .floating-toggle-btn {
-                min-width: 32px;
-                padding: 0 7px;
-                font-size: 0.7rem;
-                border-radius: 16px;
-            }
-        }
-
-        /* 横屏优化 */
-        @media (max-height: 600px) {
-            .images-container {
-                height: 100vh;
-            }
-            
-            .controls {
-                padding: 8px;
-                margin: 10px auto;
-            }
-            
-            .main-controls {
-                margin-bottom: 8px;
-            }
-            
-            .key-hint {
-                margin-top: 8px;
-                font-size: 0.8rem;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- 新增：题目指示器 -->
     <div class="question-indicator" id="question-indicator">
         第 <span id="current-question">0</span> 题 / 共 <span id="total-questions">8</span> 题
     </div>
     
-    <!-- 新增：题目导航按钮 -->
     <div class="question-nav">
         <a href="#" id="prev-question" class="nav-button">←</a>
         <a href="#" id="next-question" class="nav-button">→</a>
@@ -574,11 +375,9 @@
                 <div class="image-container" id="main-container">
                     <!-- 主图将在这里显示 -->
                 </div>
-                <!-- 滚动提示 -->
                 <div class="scroll-hint">向下滚动查看控制面板</div>
             </div>
 
-            <!-- 控制按钮区域（放在图片下方，需要滚动才能看到） -->
             <div class="controls">
                 <div class="main-controls">
                     <button class="toggle-btn" id="toggle-all">全部显示</button>
@@ -595,7 +394,6 @@
         </div>
     </div>
 
-    <!-- 悬浮导航按钮（保持固定悬浮） -->
     <div class="floating-nav" id="floating-nav">
         <div class="floating-nav-btn floating-toggle-btn" id="floating-toggle">全部显示</div>
         <div class="floating-nav-btn" id="floating-prev">←</div>
@@ -606,23 +404,18 @@
         document.addEventListener('DOMContentLoaded', function() {
             const buttonsRow = document.getElementById('buttons-row');
             const mainContainer = document.getElementById('main-container');
-            const imagesContainer = document.getElementById('images-container');
             const toggleAllBtn = document.getElementById('toggle-all');
             const prevLayerBtn = document.getElementById('prev-layer');
             const nextLayerBtn = document.getElementById('next-layer');
-            const content = document.querySelector('.content');
             
-            // 获取悬浮导航元素
             const floatingNav = document.getElementById('floating-nav');
             const floatingToggle = document.getElementById('floating-toggle');
             const floatingPrev = document.getElementById('floating-prev');
             const floatingNext = document.getElementById('floating-next');
             
-            // 获取题目导航按钮
             const prevQuestionBtn = document.getElementById('prev-question');
             const nextQuestionBtn = document.getElementById('next-question');
             
-            // 获取题目指示器元素
             const questionIndicator = document.getElementById('question-indicator');
             const currentQuestionSpan = document.getElementById('current-question');
             const totalQuestionsSpan = document.getElementById('total-questions');
@@ -630,19 +423,16 @@
             const urlParams = new URLSearchParams(window.location.search);
             const q = urlParams.get('q');
             
-            // 定義路徑與標題的對應列表
             const pathTitleList = [
                 ['1-1', '1. 三相三線式220V屋內線路裝置', '5'],
                 ['1-2', '2. 三相三線式220伏之屋內線路裝置', '6'],
                 ['1-3', '3. 三相四線式220/380伏之屋內線路裝置', '5'],
             ];
             
-            // 預設標題
             let matchedTitle = '默認標題';
             let question_no = '0';
             let currentQuestionIndex = -1;
             
-            // 檢查路徑是否包含列表中的任何關鍵字
             for (let i = 0; i < pathTitleList.length; i++) {
                 const [pathKey, title, stack] = pathTitleList[i];
                 if (q == pathKey) {
@@ -653,29 +443,23 @@
                 }
             }
             
-            // 更新题目指示器
             if (currentQuestionIndex >= 0) {
                 currentQuestionSpan.textContent = currentQuestionIndex + 1;
             }
             totalQuestionsSpan.textContent = pathTitleList.length;
             
-            // 設置上一題和下一題的鏈接（循環導航）
             if (currentQuestionIndex >= 0) {
-                // 上一題（循環）
                 const prevIndex = currentQuestionIndex === 0 ? pathTitleList.length - 1 : currentQuestionIndex - 1;
                 const prevQuestion = pathTitleList[prevIndex][0];
                 prevQuestionBtn.href = `2.html?q=${prevQuestion}`;
                 
-                // 下一題（循環）
                 const nextIndex = currentQuestionIndex === pathTitleList.length - 1 ? 0 : currentQuestionIndex + 1;
                 const nextQuestion = pathTitleList[nextIndex][0];
                 nextQuestionBtn.href = `2.html?q=${nextQuestion}`;
             }
             
-            // 同時更新頁面標題
             document.title = matchedTitle;
             
-            // 图层数据 - 合并为单一图层组
             const layers = [
                 { id: 'layer1', name: '图层 2', image: '1.gif' },
                 { id: 'layer2', name: '图层 3', image: '2.gif' },
@@ -700,7 +484,6 @@
                 { id: 'layer21', name: '图层 22', image: '21.gif' }
             ];
             
-            // 只取需要的图层数量
             const activeLayers = layers.slice(0, question_no);
             
             // 创建底图元素
@@ -708,53 +491,52 @@
             baseImg.className = 'base-image';
             baseImg.src = q + '/' + '0.gif';
             baseImg.alt = '底图';
-            baseImg.addEventListener('load', adjustContentHeight);
-            baseImg.addEventListener('error', adjustContentHeight);
+            
+            // 添加加载完成后的回调
+            baseImg.addEventListener('load', function() {
+                console.log('底图加载完成，尺寸:', this.naturalWidth, 'x', this.naturalHeight);
+                ensureLayerAlignment();
+            });
+            
+            baseImg.addEventListener('error', function() {
+                console.error('底图加载失败');
+            });
+            
             mainContainer.appendChild(baseImg);
         
             let currentLayerIndex = -1;
             let allVisible = false;
             let blinkingInterval = null;
             
-            // 悬浮导航拖拽功能变量
-            let isDragging = false;
-            let isPotentialDrag = false;
-            let dragOffsetX, dragOffsetY;
-            let dragStartX, dragStartY;
-            let dragTimeout;
-            const DRAG_THRESHOLD = 5;
-            const DRAG_DELAY = 200;
-            
-            // 动态调整 content 高度
-            function adjustContentHeight() {
-                const imageContainer = document.querySelector('.image-container');
-
-                // 检查图片是否加载完成
-                let allImagesLoaded = true;
-                document.querySelectorAll('.base-image, .layer').forEach(img => {
-                    if (!img.complete || img.naturalHeight === 0) {
-                        allImagesLoaded = false;
-                    }
-                });
-
-                if (!allImagesLoaded) {
-                    setTimeout(adjustContentHeight, 100);
-                    return;
-                }
-
-                // 确保所有图层与底图完全重叠
+            // 新增函数：确保图层与底图完全对齐
+            function ensureLayerAlignment() {
+                const baseImage = document.querySelector('.base-image');
+                if (!baseImage) return;
+                
+                // 获取底图的实际渲染尺寸和位置
+                const baseRect = baseImage.getBoundingClientRect();
+                const containerRect = mainContainer.getBoundingClientRect();
+                
+                console.log('底图位置:', baseRect.left, baseRect.top);
+                console.log('底图尺寸:', baseRect.width, baseRect.height);
+                console.log('容器尺寸:', containerRect.width, containerRect.height);
+                
+                // 设置所有图层与底图相同的尺寸和位置
                 document.querySelectorAll('.layer').forEach(layer => {
-                    layer.style.width = '100%';
-                    layer.style.height = '100%';
+                    // 使用与底图相同的定位方式
+                    layer.style.width = baseRect.width + 'px';
+                    layer.style.height = baseRect.height + 'px';
+                    layer.style.left = '50%';
+                    layer.style.top = '50%';
+                    layer.style.transform = 'translate(-50%, -50%)';
                     layer.style.objectFit = 'contain';
                 });
             }
             
-            // 初始化时检测屏幕方向
-            adjustContentHeight();
-            
             // 监听窗口大小变化
-            window.addEventListener('resize', adjustContentHeight);
+            window.addEventListener('resize', function() {
+                setTimeout(ensureLayerAlignment, 100);
+            });
             
             // 创建数字控制按钮和图层
             activeLayers.forEach((layer, index) => {
@@ -773,8 +555,17 @@
                 layerElement.src = q + '/' + layer.image;
                 layerElement.alt = layer.name;
                 layerElement.style.zIndex = index + 2;
-                layerElement.addEventListener('load', adjustContentHeight);
-                layerElement.addEventListener('error', adjustContentHeight);
+                
+                // 图层加载完成后确保尺寸与底图一致
+                layerElement.addEventListener('load', function() {
+                    console.log(`图层 ${layer.id} 加载完成`);
+                    ensureLayerAlignment();
+                });
+                
+                layerElement.addEventListener('error', function() {
+                    console.error(`图层 ${layer.id} 加载失败`);
+                });
+                
                 mainContainer.appendChild(layerElement);
                 
                 // 添加事件监听
@@ -809,9 +600,7 @@
             
             // 悬浮全部显示按钮事件
             floatingToggle.addEventListener('click', function(e) {
-                if (!isDragging) {
-                    toggleAllLayers();
-                }
+                toggleAllLayers();
             });
             
             // 上一个图层按钮
@@ -826,136 +615,11 @@
             
             // 悬浮导航按钮事件 - 点击功能
             floatingPrev.addEventListener('click', function(e) {
-                if (!isDragging) {
-                    showPrevLayer();
-                }
+                showPrevLayer();
             });
             
             floatingNext.addEventListener('click', function(e) {
-                if (!isDragging) {
-                    showNextLayer();
-                }
-            });
-            
-            // 悬浮导航拖拽功能 - 鼠标事件
-            function handleDragStart(e) {
-                e.preventDefault();
-                
-                const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-                const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-                
-                dragStartX = clientX;
-                dragStartY = clientY;
-                isPotentialDrag = true;
-                
-                dragTimeout = setTimeout(()=> {
-                    if (isPotentialDrag) {
-                        startDragging(clientX, clientY);
-                    }
-                }, DRAG_DELAY);
-                
-                document.addEventListener('mousemove', handleDragMove);
-                document.addEventListener('mouseup', handleDragEnd);
-                document.addEventListener('touchmove', handleDragMove, { passive: false });
-                document.addEventListener('touchend', handleDragEnd);
-            }
-            
-            function handleDragMove(e) {
-                if (!isPotentialDrag && !isDragging) return;
-                
-                const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-                const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-                
-                if (isPotentialDrag && !isDragging) {
-                    const dx = Math.abs(clientX - dragStartX);
-                    const dy = Math.abs(clientY - dragStartY);
-                    
-                    if (dx > DRAG_THRESHOLD || dy > DRAG_THRESHOLD) {
-                        startDragging(clientX, clientY);
-                    }
-                }
-                
-                if (isDragging) {
-                    const x = clientX - dragOffsetX;
-                    const y = clientY - dragOffsetY;
-                    
-                    const maxX = window.innerWidth - floatingNav.offsetWidth;
-                    const maxY = window.innerHeight - floatingNav.offsetHeight;
-                    
-                    floatingNav.style.left = Math.min(Math.max(0, x), maxX) + 'px';
-                    floatingNav.style.top = Math.min(Math.max(0, y), maxY) + 'px';
-                    floatingNav.style.right = 'auto';
-                    
-                    if (e.touches) {
-                        e.preventDefault();
-                    }
-                }
-            }
-            
-            function handleDragEnd() {
-                clearTimeout(dragTimeout);
-                
-                if (isDragging) {
-                    localStorage.setItem('floatingNavPos', JSON.stringify({
-                        left: floatingNav.style.left,
-                        top: floatingNav.style.top
-                    }));
-                }
-                
-                isDragging = false;
-                isPotentialDrag = false;
-                floatingNav.classList.remove('dragging');
-                
-                document.removeEventListener('mousemove', handleDragMove);
-                document.removeEventListener('mouseup', handleDragEnd);
-                document.removeEventListener('touchmove', handleDragMove);
-                document.removeEventListener('touchend', handleDragEnd);
-            }
-            
-            function startDragging(clientX, clientY) {
-                isDragging = true;
-                isPotentialDrag = false;
-                floatingNav.classList.add('dragging');
-                
-                const rect = floatingNav.getBoundingClientRect();
-                dragOffsetX = clientX - rect.left;
-                dragOffsetY = clientY - rect.top;
-            }
-            
-            // 为所有按钮添加拖拽事件监听
-            floatingToggle.addEventListener('mousedown', handleDragStart);
-            floatingToggle.addEventListener('touchstart', handleDragStart, { passive: true });
-            
-            floatingPrev.addEventListener('mousedown', handleDragStart);
-            floatingPrev.addEventListener('touchstart', handleDragStart, { passive: true });
-            
-            floatingNext.addEventListener('mousedown', handleDragStart);
-            floatingNext.addEventListener('touchstart', handleDragStart, { passive: true });
-            
-            // 加载保存的位置
-            const savedPos = localStorage.getItem('floatingNavPos');
-            if (savedPos) {
-                const pos = JSON.parse(savedPos);
-                floatingNav.style.left = pos.left;
-                floatingNav.style.top = pos.top;
-                floatingNav.style.right = 'auto';
-            }
-            
-            // 窗口大小变化时调整位置
-            window.addEventListener('resize', function() {
-                const rect = floatingNav.getBoundingClientRect();
-                const maxX = window.innerWidth - floatingNav.offsetWidth;
-                const maxY = window.innerHeight - floatingNav.offsetHeight;
-                
-                if (rect.right > window.innerWidth) {
-                    floatingNav.style.left = Math.min(parseInt(floatingNav.style.left || 0), maxX) + 'px';
-                }
-                
-                if (rect.bottom > window.innerHeight) {
-                    floatingNav.style.top = Math.min(parseInt(floatingNav.style.top || 0), maxY) + 'px';
-                }
-                
-                adjustContentHeight();
+                showNextLayer();
             });
             
             // 键盘事件监听
@@ -1113,8 +777,8 @@
             // 初始化按钮状态
             updateNavButtons();
 
-            // 初始化高度计算
-            setTimeout(adjustContentHeight, 500);
+            // 初始化尺寸对齐
+            setTimeout(ensureLayerAlignment, 500);
         });
     </script>
 </body>
