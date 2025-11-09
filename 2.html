@@ -357,9 +357,32 @@
             0%, 100% { opacity: 0.8; }
             50% { opacity: 0.5; }
         }
+				
+				.home-nav {
+						position: fixed;
+						top: 0px;
+						left: 0px;
+						display: flex;
+						gap: 5px;
+						z-index: 1000;
+				}
+
+				/* 如果需要調整現有 question-nav 的位置，可以添加 */
+				.question-nav {
+						position: fixed;
+						top: 0px;
+						right: 0px;
+						display: flex;
+						gap: 5px;
+						z-index: 1000;
+				}
     </style>
 </head>
 <body>
+		<div class="home-nav">
+        <a href="https://yeha49.github.io" class="nav-button" id="home-button">首</a>
+    </div>
+
     <div class="question-indicator" id="question-indicator">
         第 <span id="current-question">0</span> 题 / 共 <span id="total-questions">8</span> 题
     </div>
